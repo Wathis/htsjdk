@@ -16,6 +16,7 @@ import java.util.Map;
 public class ByteArrayLenCodecTest extends HtsjdkTest {
 
     // this is the only viable way to make a fully-functional ByteArrayLenEncoding
+    // uses a modified version of ByteArrayLenEncoding toByteArray
 
     private ByteArrayLenEncoding makeEncoding(final int betaIntOffset, final int betaIntBitLimit, final byte valuesExternalBlockId) throws IOException {
         try (ByteArrayOutputStream byteArrayOutputStream = new ByteArrayOutputStream()) {
@@ -36,7 +37,7 @@ public class ByteArrayLenCodecTest extends HtsjdkTest {
         }
     }
 
-    // mock external data block compression header maps for the external byte array codec
+    // mock external data block compression header maps for the external byte array codecs
 
     private BitCodec<byte[]> makeWriteCodec(ByteArrayLenEncoding encoding, final int externalBlockId, ExposedByteArrayOutputStream mockExternalBlock) {
         final Map<Integer, ExposedByteArrayOutputStream> externalOutputMap = new HashMap<>();
